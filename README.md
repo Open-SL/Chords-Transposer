@@ -2,7 +2,7 @@
 
 Easily transpose chords from a one scale to another scale
 
-using chords.js file you can parse a raw text into chords and song lines, transpose song from this scale to given scale or from a required numbers of midtones.
+using chords.js file you can parse a raw text into chords and song lines, transpose song from this scale to given scale or from a required numbers of semitones.
 
 use
 ```
