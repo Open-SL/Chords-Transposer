@@ -1,0 +1,94 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Guitar Chords</title>
+    <meta name="description" content="Guitar Chords">
+    <meta name="author" content="Nadun">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css" />
+    <![endif]-->
+    <link rel="stylesheet" href="https://oss.maxcdn.com/libs/normalize-css/3.0.0/normalize.min.css">
+    <link rel="stylesheet" href="./styles.css">
+
+</head>
+
+<body>
+    <a class="github-fork-ribbon right-top fixed" href="https://github.com/project" title="Fork me on GitHub">Fork me on GitHub</a>
+    <div class="content">
+
+        <h1>Chords Transposer</h1>
+        <p>
+            Chords Transposer can manipulate guitar chords in many ways such as Guitar Chords parsing and Transposing.
+        </p>
+        <h2>Usage</h2>
+        <p>
+            <ul style="list-style-type:circle">
+                <li>Click parse to filter raw song into chords and song lines.</li>
+                <li>Click transpose to transpose song from this scale to given scale (in this scenario G to G#)</li>
+                <li>Click shift +1 to increase scale by 1 midtone</li>
+                <li>Click shift -1 to decrease scale by 1 midtone</li>
+            </ul>
+        </p>
+        <textarea id="src_id" cols="67" rows="20" placeholder="Raw song(s) to parse"></textarea><br/>
+        <input type="button" value="Parse" onclick="parse('src_id','dst_id')" />
+        <input type="button" value="Transpose" onclick="shift('src_id','dst_id','G','G#')" />
+        <input type="button" value="Shift +1" onclick="shiftPlus('src_id','dst_id')" />
+        <input type="button" value="Shift -1" onclick="shiftMinus('src_id','dst_id')" />
+
+        <script src="lib/chords.js"></script>
+        <pre id="dst_id">
+Gm  F    Gm Eb     B   F     B  Gm
+Mandaramen eha, dew duwak athi bala
+B    Cm    B    F
+Mata yanna denna siyumeliye
+Suwanda soya soya
+B  Cm       B   F
+Me raththriyama nisansalai
+Gm
+Eth oba nisa
+    </pre>
+        <h2>About</h2>
+        <p>
+            Chords Transposer was written by
+            <a href="https://github.com/nadunindunil">Nadun indunil</a>.
+        </p>
+    </div>
+    <script>
+        val = 0;
+
+        function shift(src_id, dst_id, from, to) {
+            val = 0;
+            var src = document.getElementById(src_id);
+            var dst = document.getElementById(dst_id);
+            dst.innerHTML = chords.shiftScale(src, from, to);
+        }
+
+        function shiftPlus(src_id, dst_id) {
+            val += 1;
+            var src = document.getElementById(src_id);
+            var dst = document.getElementById(dst_id);
+            dst.innerHTML = chords.shiftScaleBy(src, val);
+        }
+
+        function shiftMinus(src_id, dst_id) {
+            val -= 1;
+            var src = document.getElementById(src_id);
+            var dst = document.getElementById(dst_id);
+            dst.innerHTML = chords.shiftScaleBy(src, val);
+        }
+
+        function parse(src_id, dst_id) {
+            val = 0;
+            var src = document.getElementById(src_id);
+            var dst = document.getElementById(dst_id);
+            dst.innerHTML = chords.parse(src);
+        }
+    </script>
+</body>
+
+</html>

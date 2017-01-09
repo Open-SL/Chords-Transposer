@@ -1,0 +1,40 @@
+.chords-highlighted {
+  color: blue;
+  text-decoration: underline;
+}
+
+html {
+    font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2 {
+    font-weight: 400;
+}
+
+pre {
+    background-color: #788291;
+    color: white;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+pre:before {}
+
+.content {
+    width: 560px;
+    margin: 0 auto;
+    padding-top: 80px;
+    color: #444;
+}
+
+a,
+a:visited {
+    color: #c00;
+}
+
+.content p {
+    font-weight: 200;
+}
