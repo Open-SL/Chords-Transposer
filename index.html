@@ -29,19 +29,23 @@
         <p>
             <ul style="list-style-type:circle">
                 <li>Click parse to filter raw song into chords and song lines.</li>
-                <li>Click transpose to transpose song from this scale to given scale (in this scenario G to G#)</li>
-                <li>Click shift +1 to increase scale by 1 semitone</li>
-                <li>Click shift -1 to decrease scale by 1 semitone</li>
+                <li>Click Transpose G# to transpose song from this scale to given scale (in this scenario G to G#)</li>
+                <li>Click Transpose +1 to increase scale by 1 semitone</li>
+                <li>Click Transpose -1 to decrease scale by 1 semitone</li>
             </ul>
         </p>
         <textarea id="src_id" cols="67" rows="20" placeholder="Raw song(s) to parse"></textarea><br/>
         <input type="button" value="Parse" onclick="parse('src_id','dst_id')" />
-        <input type="button" value="Transpose" onclick="shift('src_id','dst_id','G','G#')" />
-        <input type="button" value="Shift +1" onclick="shiftPlus('src_id','dst_id')" />
-        <input type="button" value="Shift -1" onclick="shiftMinus('src_id','dst_id')" />
+        <input type="button" value="Transpose to G#" onclick="shift('src_id','dst_id','G','G#')" />
+        <input type="button" value="Transpose +1" onclick="shiftPlus('src_id','dst_id')" />
+        <input type="button" value="Transpose -1" onclick="shiftMinus('src_id','dst_id')" />
 
         <script src="dist/chords.js"></script>
         <pre id="dst_id">
+example #1:
+
+| Gm | F | Gm | Eb |
+| B  | F | B | Gm |
 Gm  F    Gm Eb     B   F     B  Gm
 Mandaramen eha, dew duwak athi bala
 B    Cm    B    F
@@ -51,6 +55,37 @@ B  Cm       B   F
 Me raththriyama nisansalai
 Gm
 Eth oba nisa
+
+example #2:
+
+[Intro]
+----------------------------------------
+|	Eb | - | Ab | - |
+| Eb | - | Cm | Dm |
+| Fm | - | Cm | Bb |
+| Eb |
+
+[Chorus]
+----------------------------------------
+    Eb
+Anganavo
+Bb        Eb
+Geethe Leewa
+Bb         Eb
+Thaale Damuwa
+Eb           Bb        Ab        Bb
+Sihinen mata keewa oba maage kiyala
+    Eb
+Anganavo
+Rupikawo
+Bb            Eb
+Ranguman Ranguwa
+     Bb         Eb
+Mata Ama mee peuwa
+         Bb       Ab       Bb      Eb
+Inne obe loke dan inne man obage loke
+
+
     </pre>
         <h2>About</h2>
         <p>

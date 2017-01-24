@@ -49,9 +49,4 @@ function parse(src_id, dst_id) {
 }
 ```
 
-Contributions are welcome for,
-
-- [X] Transpose scale from one to another
-- [X] Fix Problem with flat and sharp signs
-- [X] Function to go transpose up and down in scales
-- [ ] Fix parsing error in more complex strings (strings with | and - signs)
+Contributions are welcome!
