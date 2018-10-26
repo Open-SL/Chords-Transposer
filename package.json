@@ -4,7 +4,7 @@
   "description": "parse and transpose guitar chords from the client side",
   "main": "chords.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp compress"
   },
   "keywords": [
     "guitar",
