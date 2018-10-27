@@ -22,28 +22,28 @@ to add chords.js file into html page
 
 function shift(src_id, dst_id, from, to) {
     val = 0;
-    var src = document.getElementById(src_id);
+    var src = document.getElementById(src_id).value;
     var dst = document.getElementById(dst_id);
     dst.innerHTML = chords.shiftScale(src, from, to); //returns a string
 }
 
 function shiftPlus(src_id, dst_id) {
     val += 1;
-    var src = document.getElementById(src_id);
+    var src = document.getElementById(src_id).value;
     var dst = document.getElementById(dst_id);
     dst.innerHTML = chords.shiftScaleBy(src, val); //returns a string
 }
 
 function shiftMinus(src_id, dst_id) {
     val -= 1;
-    var src = document.getElementById(src_id);
+    var src = document.getElementById(src_id).value;
     var dst = document.getElementById(dst_id);
     dst.innerHTML = chords.shiftScaleBy(src, val); //returns a string
 }
 
 function parse(src_id, dst_id) {
     val = 0;
-    var src = document.getElementById(src_id);
+    var src = document.getElementById(src_id).value;
     var dst = document.getElementById(dst_id);
     dst.innerHTML = chords.parse(src); //returns a string
 }

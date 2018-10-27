@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build && npm run open",
     "build": "gulp compress",
-    "open": "http-server -a localhost -p 3000 -o"
+    "open": "http-server -a localhost -p 8000 -o -c-1"
   },
   "keywords": [
     "guitar",

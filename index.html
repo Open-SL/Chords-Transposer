@@ -18,7 +18,8 @@
 </head>
 
 <body>
-    <a class="github-fork-ribbon right-top fixed" href="https://github.com/project" title="Fork me on GitHub">Fork me on GitHub</a>
+    <a class="github-fork-ribbon right-top fixed" href="https://github.com/Open-SL/Chords-Transposer" title="Fork me on GitHub">Fork
+        me on GitHub</a>
     <div class="content">
 
         <h1>Chords Transposer</h1>
@@ -34,7 +35,7 @@
                 <li>Click Transpose -1 to decrease scale by 1 semitone</li>
             </ul>
         </p>
-        <textarea id="src_id" cols="67" rows="20" placeholder="Raw song(s) to parse"></textarea><br/>
+        <textarea id="src_id" cols="67" rows="20" placeholder="Raw song(s) to parse"></textarea><br />
         <input type="button" value="Parse" onclick="parse('src_id','dst_id')" />
         <input type="button" value="Transpose to G#" onclick="shift('src_id','dst_id','G','G#')" />
         <input type="button" value="Transpose +1" onclick="shiftPlus('src_id','dst_id')" />
@@ -98,28 +99,28 @@ Inne obe loke dan inne man obage loke
 
         function shift(src_id, dst_id, from, to) {
             val = 0;
-            var src = document.getElementById(src_id);
+            var src = document.getElementById(src_id).value;
             var dst = document.getElementById(dst_id);
             dst.innerHTML = chords.shiftScale(src, from, to);
         }
 
         function shiftPlus(src_id, dst_id) {
             val += 1;
-            var src = document.getElementById(src_id);
+            var src = document.getElementById(src_id).value;
             var dst = document.getElementById(dst_id);
             dst.innerHTML = chords.shiftScaleBy(src, val);
         }
 
         function shiftMinus(src_id, dst_id) {
             val -= 1;
-            var src = document.getElementById(src_id);
+            var src = document.getElementById(src_id).value;
             var dst = document.getElementById(dst_id);
             dst.innerHTML = chords.shiftScaleBy(src, val);
         }
 
         function parse(src_id, dst_id) {
             val = 0;
-            var src = document.getElementById(src_id);
+            var src = document.getElementById(src_id).value;
             var dst = document.getElementById(dst_id);
             dst.innerHTML = chords.parse(src);
         }
