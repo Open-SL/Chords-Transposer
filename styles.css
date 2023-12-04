@@ -1,6 +1,20 @@
 .chords-highlighted {
+  color: #206BC4;
+  font-weight: bold;
+}
+
+.chorus {
+  border-left: 2px solid brown;
+  padding-left: 15px;
+}
+
+.comment {
+  color: gray;
+  font-style: italic;
+}
+
+.tab {
   color: blue;
-  text-decoration: underline;
 }
 
 html {
@@ -13,8 +27,7 @@ h2 {
 }
 
 pre {
-    background-color: #788291;
-    color: white;
+    background-color: inherit;
     padding: 10px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
