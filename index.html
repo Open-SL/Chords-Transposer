@@ -40,51 +40,80 @@
         <input type="button" value="Transpose to G#" onclick="shift('src_id','dst_id','G','G#')" />
         <input type="button" value="Transpose +1" onclick="shiftPlus('src_id','dst_id')" />
         <input type="button" value="Transpose -1" onclick="shiftMinus('src_id','dst_id')" />
-        
+
         <script src="dist/chords.js"></script>
         <pre id="dst_id">
-example #1:
 
-| Gm | F | Gm | Eb |
-| B  | F | B | Gm |
-Gm  F    Gm Eb     B   F     B  Gm
-Mandaramen eha, dew duwak athi bala
-B    Cm    B    F
-Mata yanna denna siyumeliye
-Suwanda soya soya
-B  Cm       B   F
-Me raththriyama nisansalai
-Gm
-Eth oba nisa
+[comment]
+This is a comment.
+[/comment]
 
-example #2:
+[tab]
+e|--------------------------------------------------------|
+B|--------------------------------------------------------|
+G|--------------------------------------------------------|
+D|--------------------------------------------------------|
+A|--------------------------------------------------------|
+E|--------------------------------------------------------|
+[/tab]
 
-[Intro]
-----------------------------------------
-|	Eb | - | Ab | - |
-| Eb | - | Cm | Dm |
-| Fm | - | Cm | Bb |
-| Eb |
+Intro
+| D   | D   | C   | C   | G   | G   | D   | D   |
+| D   | D   | C   | C   | G   | G   | D   | D   |
+| D   | D   | C   | C   | G   | G   | D   | D   |
 
-[Chorus]
-----------------------------------------
-    Eb
-Anganavo
-Bb        Eb
-Geethe Leewa
-Bb         Eb
-Thaale Damuwa
-Eb           Bb        Ab        Bb
-Sihinen mata keewa oba maage kiyala
-    Eb
-Anganavo
-Rupikawo
-Bb            Eb
-Ranguman Ranguwa
-     Bb         Eb
-Mata Ama mee peuwa
-         Bb       Ab       Bb      Eb
-Inne obe loke dan inne man obage loke
+D
+She's got a smile that it seems to me
+  C
+Reminds me of childhood memories
+       G
+Where everything
+                                D
+Was as fresh as a bright blue sky
+D
+Now and then when I see her face
+    C
+She takes me away to that special place
+         G
+And if I stared too long
+                              D
+I'd probably break down and cry
+
+[chorus]
+A               C              D
+Whoa oh, sweet child o' mine
+A               C              D
+Whoa, oh, oh, oh sweet love o' mine
+[/chorus]
+
+[Instrumental]
+| D   | D   | C   | C   | G   | G   | D   | D   |
+
+
+D
+She's got eyes of the bluest skies
+   C
+As if they thought of rain
+    G
+I'd hate to look into those eyes
+    D
+And see an ounce of pain
+    D
+Her hair reminds me of a warm safe place
+      C
+Where as a child I'd hide
+    G
+And pray for the thunder and rain
+     D
+To quietly pass me by
+
+
+[chorus]
+A        C              D
+Whoa oh, oh, sweet child o' mine
+A              C                D
+Whoa, oh, oh, oh sweet love o' mine
+[/chorus]
 
 
     </pre>
@@ -102,6 +131,7 @@ Inne obe loke dan inne man obage loke
             var src = document.getElementById(src_id).value;
             var dst = document.getElementById(dst_id);
             dst.innerHTML = chords.shiftScale(src, from, to);
+            applyStyles(dst_id);
         }
 
         function shiftPlus(src_id, dst_id) {
@@ -109,6 +139,7 @@ Inne obe loke dan inne man obage loke
             var src = document.getElementById(src_id).value;
             var dst = document.getElementById(dst_id);
             dst.innerHTML = chords.shiftScaleBy(src, val);
+            applyStyles(dst_id);
         }
 
         function shiftMinus(src_id, dst_id) {
@@ -116,6 +147,7 @@ Inne obe loke dan inne man obage loke
             var src = document.getElementById(src_id).value;
             var dst = document.getElementById(dst_id);
             dst.innerHTML = chords.shiftScaleBy(src, val);
+            applyStyles(dst_id);
         }
 
         function parse(src_id, dst_id) {
@@ -123,6 +155,33 @@ Inne obe loke dan inne man obage loke
             var src = document.getElementById(src_id).value;
             var dst = document.getElementById(dst_id);
             dst.innerHTML = chords.parse(src);
+            applyStyles(dst_id);
+        }
+
+        function applyStyles(dst_id) {
+            var dst = document.getElementById(dst_id);
+
+            // Get the content of the <pre> element
+            var content = dst.innerHTML;
+
+            // Replace [tab] with <span class="tab">
+            content = content.replace(/\[tab\]/g, '<span class="tab">');
+            content = content.replace(/\[\/tab\]/g, '</span>');
+
+            // Replace [tab] with <span class="tab">
+            content = content.replace(/\[comment\]/g, '<span class="comment">');
+            content = content.replace(/\[\/comment\]/g, '</span>');
+
+            // Replace [chorus]...[/chorus] with <span class="chorus">...</span>
+            content = content.replace(/\[chorus\]([\s\S]*?)\[\/chorus\]/g, function (match, chorusContent) {
+                var chorusLines = chorusContent.trim().split('\n').map(function (line) {
+                    return '<span class="chorus">' + line + '</span>';
+                });
+                return chorusLines.join('\n');
+            });
+
+            // Update the content of the <pre> element
+            dst.innerHTML = content;
         }
     </script>
 </body>
