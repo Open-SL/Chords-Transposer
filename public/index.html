@@ -12,9 +12,7 @@
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css" />
     <![endif]-->
-    <link rel="stylesheet" href="https://oss.maxcdn.com/libs/normalize-css/3.0.0/normalize.min.css">
     <link rel="stylesheet" href="./styles.css">
-
 </head>
 
 <body>
@@ -36,12 +34,12 @@
             </ul>
         </p>
         <textarea id="src_id" cols="67" rows="20" placeholder="Raw song(s) to parse"></textarea><br />
-        <input type="button" value="Parse" onclick="parse('src_id','dst_id')" />
+        <input type="button" value="Parse" onclick="onParse('src_id','dst_id')" />
         <input type="button" value="Transpose to G#" onclick="shift('src_id','dst_id','G','G#')" />
         <input type="button" value="Transpose +1" onclick="shiftPlus('src_id','dst_id')" />
         <input type="button" value="Transpose -1" onclick="shiftMinus('src_id','dst_id')" />
         
-        <script src="dist/chords.js"></script>
+        <script src="../dist/bundle.min.js"></script>
         <pre id="dst_id">
 example #1:
 
@@ -95,34 +93,31 @@ Inne obe loke dan inne man obage loke
         </p>
     </div>
     <script>
-        val = 0;
+        chordsTransposer = null;
 
         function shift(src_id, dst_id, from, to) {
-            val = 0;
             var src = document.getElementById(src_id).value;
             var dst = document.getElementById(dst_id);
-            dst.innerHTML = chords.shiftScale(src, from, to);
+            dst.innerHTML = chordsTransposer.shiftScaleFromTo(from, to).getWithTags();
         }
 
         function shiftPlus(src_id, dst_id) {
-            val += 1;
             var src = document.getElementById(src_id).value;
             var dst = document.getElementById(dst_id);
-            dst.innerHTML = chords.shiftScaleBy(src, val);
+            dst.innerHTML = chordsTransposer.shiftScaleBy(1).getWithTags();
         }
 
         function shiftMinus(src_id, dst_id) {
-            val -= 1;
             var src = document.getElementById(src_id).value;
             var dst = document.getElementById(dst_id);
-            dst.innerHTML = chords.shiftScaleBy(src, val);
+            dst.innerHTML = chordsTransposer.shiftScaleBy(-1).getWithTags();
         }
 
-        function parse(src_id, dst_id) {
-            val = 0;
+        function onParse(src_id, dst_id) {
             var src = document.getElementById(src_id).value;
+            chordsTransposer = new ChordsTransposer.default(src);
             var dst = document.getElementById(dst_id);
-            dst.innerHTML = chords.parse(src);
+            dst.innerHTML = chordsTransposer.getWithTags();
         }
     </script>
 </body>

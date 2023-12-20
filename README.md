@@ -1,52 +1,33 @@
-# Chords Transposer #
+# Chords Transposer
 
-Easily transpose chords from a one scale to another scale
+The Chord Transposer is a TypeScript/JavaScript library designed to manipulate and transpose chords within text-based songs. This library is intended for browser use and offers functionalities to parse song texts, identify chord positions, and apply transformations like transposing and highlighting chords.
 
-using chords.js file you can parse a raw text into chords and song lines, transpose song from this scale to given scale or from a required numbers of semitones.
+## Features
 
-use
-```
-<script src="lib/chords.js"></script>
-```
-to add chords.js file into html page
+- **Chord Parsing:** Parses song texts to identify and extract chords.
+- **Chord Transposition:** Allows shifting chords up or down by a specified interval.
+- **HTML Tag Insertion:** Supports highlighting chords by inserting HTML tags around them.
 
-## Exposed Functions
-```javascript
-  shiftScale(src, from, to);
-  shiftScaleBy(src, val);
-  parse(src);
-```
+## Usage
 
-## Examples ##
-```javascript
+To use the Chord Transposer library in your browser-based projects, follow these steps:
 
-function shift(src_id, dst_id, from, to) {
-    val = 0;
-    var src = document.getElementById(src_id).value;
-    var dst = document.getElementById(dst_id);
-    dst.innerHTML = chords.shiftScale(src, from, to); //returns a string
-}
+TBD
 
-function shiftPlus(src_id, dst_id) {
-    val += 1;
-    var src = document.getElementById(src_id).value;
-    var dst = document.getElementById(dst_id);
-    dst.innerHTML = chords.shiftScaleBy(src, val); //returns a string
-}
+## API Reference
 
-function shiftMinus(src_id, dst_id) {
-    val -= 1;
-    var src = document.getElementById(src_id).value;
-    var dst = document.getElementById(dst_id);
-    dst.innerHTML = chords.shiftScaleBy(src, val); //returns a string
-}
+The library exposes the following main methods:
 
-function parse(src_id, dst_id) {
-    val = 0;
-    var src = document.getElementById(src_id).value;
-    var dst = document.getElementById(dst_id);
-    dst.innerHTML = chords.parse(src); //returns a string
-}
-```
+1. `constructor(song: string)`: Initializes the library with the song text.
+2. `shiftScaleBy(shiftBy: number)`: Shifts chords by the specified number of semitones.
+3. `shiftScaleFromTo(from: string, to: string)`: Shifts chords from a specific chord to another.
+4. `getWithTags()`: Returns the updated song text with HTML tags around chords.
 
-Contributions are welcome!
+Refer to the library source code or documentation for more detailed API information.
+
+## Contributing
+
+Contributions to this library are welcome! If you encounter issues or have ideas for enhancements, feel free to create an issue or pull request on the GitHub repository.
+
+## License
+This library is licensed under the MIT License.
