@@ -1,7 +1,7 @@
 {
   "name": "chords-transposer",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "The Chord Transposer is a TypeScript/JavaScript library designed to manipulate and transpose chords within text-based songs",
   "main": "lib/index.ts",
   "files": [
     "dist"
