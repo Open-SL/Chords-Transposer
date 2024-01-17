@@ -2,4 +2,5 @@
 coverage
 .idea
 /dist
+/build
 .DS_Store

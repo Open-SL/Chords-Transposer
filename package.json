@@ -11,7 +11,8 @@
     "rollup": "rollup -c",
     "start": "tsc -w",
     "test": "jest",
-    "ci": "tsc && rollup -c"
+    "ci": "tsc && rollup -c",
+    "copy": "mkdir -p build && cp ./dist/chords-transposer.min.js*  build/ && cp -r ./public/* build/"
   },
   "author": "nadun1indunil@gmail.com",
   "license": "ISC",
