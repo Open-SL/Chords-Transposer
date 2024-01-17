@@ -8,11 +8,64 @@ The Chord Transposer is a TypeScript/JavaScript library designed to manipulate a
 - **Chord Transposition:** Allows shifting chords up or down by a specified interval.
 - **HTML Tag Insertion:** Supports highlighting chords by inserting HTML tags around them.
 
-## Usage
+## Getting Started
 
-To use the Chord Transposer library in your browser-based projects, follow these steps:
+Once installed, import the `chords-transposer` library into your project,
 
-TBD
+```js
+import Transposer from "chords-transposer";
+```
+
+### 1. Parsing Chord Progressions
+
+Create a Transposer object by passing the chord progression string:
+
+```js
+const song = "Gm  F    Gm Eb     B   F     B  Gm";
+const songObj = new Transposer(song);
+```
+
+### 2. Getting Chords with Tags
+
+Retrieve the chord progression with HTML span tags for styling:
+
+```js
+const chordsWithTags = songObj.getWithTags();
+console.log(chordsWithTags);
+```
+
+The output will be:
+
+```html
+<span class="chords-highlighted">Gm</span>  <span class="chords-highlighted">F</span>    <span class="chords-highlighted">Gm</span> <span class="chords-highlighted">Eb</span>     <span class="chords-highlighted">B</span>   <span class="chords-highlighted">F</span>     <span class="chords-highlighted">B</span>  <span class="chords-highlighted">Gm</span>
+```
+
+### 3. Shifting Scale
+
+Transpose the chord progression by shifting the scale:
+
+```js
+const shiftedChords = songObj.shiftScaleBy(1).getWithTags();
+console.log(shiftedChords);
+```
+
+### 4. Shifting Scale From One Key to Another
+
+Transpose the chord progression by specifying the original and target keys:
+
+```js
+const transposedChords = songObj.shiftScaleFromTo("G", "A").getWithTags();
+console.log(transposedChords);
+```
+
+### 5. Complex Scale Shifting
+
+Combine multiple scale shifts for complex transpositions:
+
+```js
+const complexTransposition = songObj.shiftScaleBy(1).shiftScaleBy(1).shiftScaleBy(1).getWithTags();
+console.log(complexTransposition);
+```
 
 ## API Reference
 
