@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+      "target": "es6",
+      "allowJs": false,
+      "allowSyntheticDefaultImports": true,
+      "allowUnreachableCode": false,
+      "allowUnusedLabels": false,
+      "checkJs": false,
+      "declaration": true,
+      "declarationMap": true,
+      "diagnostics": false,
+      "disableSizeLimit": true,
+      "downlevelIteration": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "importHelpers": true,
+      "lib": [
+          "es6",
+          "esnext",
+          "dom",
+          "webworker",
+          "es2015",
+          "es2016",
+          "es2017",
+          "es2018",
+          "esnext.asynciterable"
+      ],
+      "moduleResolution": "node",
+      "skipLibCheck": true,
+      "strict": true,
+      "sourceMap": true,
+      "outDir": "dist",
+      "rootDir": "lib",
+  },
+  "exclude": [
+      "dist",
+      "playground",
+      "tools",
+      "tests"
+  ]
+}

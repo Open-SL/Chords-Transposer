@@ -1,3 +1,6 @@
 /node_modules
 coverage
 .idea
+/dist
+/build
+.DS_Store

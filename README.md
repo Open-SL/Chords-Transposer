@@ -1,52 +1,86 @@
-# Chords Transposer #
+# Chords Transposer
 
-Easily transpose chords from a one scale to another scale
+The Chord Transposer is a TypeScript/JavaScript library designed to manipulate and transpose chords within text-based songs. This library is intended for browser use and offers functionalities to parse song texts, identify chord positions, and apply transformations like transposing and highlighting chords.
 
-using chords.js file you can parse a raw text into chords and song lines, transpose song from this scale to given scale or from a required numbers of semitones.
+## Features
 
-use
-```
-<script src="lib/chords.js"></script>
-```
-to add chords.js file into html page
+- **Chord Parsing:** Parses song texts to identify and extract chords.
+- **Chord Transposition:** Allows shifting chords up or down by a specified interval.
+- **HTML Tag Insertion:** Supports highlighting chords by inserting HTML tags around them.
 
-## Exposed Functions
-```javascript
-  shiftScale(src, from, to);
-  shiftScaleBy(src, val);
-  parse(src);
-```
+## Getting Started
 
-## Examples ##
-```javascript
+Once installed, import the `chords-transposer` library into your project,
 
-function shift(src_id, dst_id, from, to) {
-    val = 0;
-    var src = document.getElementById(src_id).value;
-    var dst = document.getElementById(dst_id);
-    dst.innerHTML = chords.shiftScale(src, from, to); //returns a string
-}
-
-function shiftPlus(src_id, dst_id) {
-    val += 1;
-    var src = document.getElementById(src_id).value;
-    var dst = document.getElementById(dst_id);
-    dst.innerHTML = chords.shiftScaleBy(src, val); //returns a string
-}
-
-function shiftMinus(src_id, dst_id) {
-    val -= 1;
-    var src = document.getElementById(src_id).value;
-    var dst = document.getElementById(dst_id);
-    dst.innerHTML = chords.shiftScaleBy(src, val); //returns a string
-}
-
-function parse(src_id, dst_id) {
-    val = 0;
-    var src = document.getElementById(src_id).value;
-    var dst = document.getElementById(dst_id);
-    dst.innerHTML = chords.parse(src); //returns a string
-}
+```js
+import Transposer from "chords-transposer";
 ```
 
-Contributions are welcome!
+### 1. Parsing Chord Progressions
+
+Create a Transposer object by passing the chord progression string:
+
+```js
+const song = "Gm  F    Gm Eb     B   F     B  Gm";
+const songObj = new Transposer(song);
+```
+
+### 2. Getting Chords with Tags
+
+Retrieve the chord progression with HTML span tags for styling:
+
+```js
+const chordsWithTags = songObj.getWithTags();
+console.log(chordsWithTags);
+```
+
+The output will be:
+
+```html
+<span class="chords-highlighted">Gm</span>  <span class="chords-highlighted">F</span>    <span class="chords-highlighted">Gm</span> <span class="chords-highlighted">Eb</span>     <span class="chords-highlighted">B</span>   <span class="chords-highlighted">F</span>     <span class="chords-highlighted">B</span>  <span class="chords-highlighted">Gm</span>
+```
+
+### 3. Shifting Scale
+
+Transpose the chord progression by shifting the scale:
+
+```js
+const shiftedChords = songObj.shiftScaleBy(1).getWithTags();
+console.log(shiftedChords);
+```
+
+### 4. Shifting Scale From One Key to Another
+
+Transpose the chord progression by specifying the original and target keys:
+
+```js
+const transposedChords = songObj.shiftScaleFromTo("G", "A").getWithTags();
+console.log(transposedChords);
+```
+
+### 5. Complex Scale Shifting
+
+Combine multiple scale shifts for complex transpositions:
+
+```js
+const complexTransposition = songObj.shiftScaleBy(1).shiftScaleBy(1).shiftScaleBy(1).getWithTags();
+console.log(complexTransposition);
+```
+
+## API Reference
+
+The library exposes the following main methods:
+
+1. `constructor(song: string)`: Initializes the library with the song text.
+2. `shiftScaleBy(shiftBy: number)`: Shifts chords by the specified number of semitones.
+3. `shiftScaleFromTo(from: string, to: string)`: Shifts chords from a specific chord to another.
+4. `getWithTags()`: Returns the updated song text with HTML tags around chords.
+
+Refer to the library source code or documentation for more detailed API information.
+
+## Contributing
+
+Contributions to this library are welcome! If you encounter issues or have ideas for enhancements, feel free to create an issue or pull request on the GitHub repository.
+
+## License
+This library is licensed under the MIT License.
