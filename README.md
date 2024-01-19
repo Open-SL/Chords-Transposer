@@ -22,7 +22,7 @@ Create a Transposer object by passing the chord progression string:
 
 ```js
 const song = "Gm  F    Gm Eb     B   F     B  Gm";
-const songObj = new Transposer(song);
+const transposer = new Transposer(song);
 ```
 
 ### 2. Getting Chords with Tags
@@ -30,7 +30,7 @@ const songObj = new Transposer(song);
 Retrieve the chord progression with HTML span tags for styling:
 
 ```js
-const chordsWithTags = songObj.getWithTags();
+const chordsWithTags = transposer.getWithTags();
 console.log(chordsWithTags);
 ```
 
@@ -45,7 +45,7 @@ The output will be:
 Transpose the chord progression by shifting the scale:
 
 ```js
-const shiftedChords = songObj.shiftScaleBy(1).getWithTags();
+const shiftedChords = transposer.shiftScaleBy(1).getWithTags();
 console.log(shiftedChords);
 ```
 
@@ -54,7 +54,7 @@ console.log(shiftedChords);
 Transpose the chord progression by specifying the original and target keys:
 
 ```js
-const transposedChords = songObj.shiftScaleFromTo("G", "A").getWithTags();
+const transposedChords = transposer.shiftScaleFromTo("G", "A").getWithTags();
 console.log(transposedChords);
 ```
 
@@ -63,7 +63,7 @@ console.log(transposedChords);
 Combine multiple scale shifts for complex transpositions:
 
 ```js
-const complexTransposition = songObj.shiftScaleBy(1).shiftScaleBy(1).shiftScaleBy(1).getWithTags();
+const complexTransposition = transposer.shiftScaleBy(1).shiftScaleBy(1).shiftScaleBy(1).getWithTags();
 console.log(complexTransposition);
 ```
 
