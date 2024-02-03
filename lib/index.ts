@@ -17,6 +17,13 @@ export class Transpose {
     this.song = song;
   }
 
+  /**
+   * Finds chords in a given line of text.
+   * 
+   * @param line - The line of text to search for chords.
+   * @param offset - The offset of the line within the larger text.
+   * @returns An array of Chord objects containing the chord and its position.
+   */
   private findChords(line: string, offset: number): Chord[] {
     const modifiedLine = line
       .replace(/\||\t|\-|\/|\(|\)|\,|\s/g, " ")
@@ -45,6 +52,12 @@ export class Transpose {
     return chordsWithPositions;
   }
 
+  /**
+   * Parses a string containing chords and returns an array of Chord objects.
+   * 
+   * @param src - The string to be parsed.
+   * @returns An array of Chord objects.
+   */
   private parse(src: string): Chord[] {
     // Parse a text with chords and highlight guitar chords
     const src_textArray = src.split(/\r\n|\r|\n/g);
@@ -60,6 +73,11 @@ export class Transpose {
     return chords;
   }
 
+  /**
+   * Adds HTML tags to highlight chords in the song.
+   * 
+   * @returns The updated song string with chord highlighting tags.
+   */
   getWithTags(): string {
     // Add '<span class="chords-highlighted">...</span>' into the code
     let offset = 0;
@@ -94,6 +112,12 @@ export class Transpose {
     return updatedSong;
   }
 
+  /**
+   * Shifts the scale of the chords by the specified amount.
+   * 
+   * @param shiftBy The amount to shift the scale by. This could be a positive or negative number.
+   * @returns An array of updated chords with the shifted scale.
+   */
   private shiftScale(shiftBy: number): Chord[] {
     let refArrangement: string[] | null = null;
     const updatedChords = this.chords.map((chord) => {
@@ -131,13 +155,25 @@ export class Transpose {
 
     return updatedChords;
   }
-
+  
+  /**
+   * Shifts the scale of the chords by the specified amount.
+   * 
+   * @param shiftBy The amount to shift the scale by. This could be either positive or negative number.
+   * @returns The instance of the class with the shifted scale.
+   */
   shiftScaleBy(shiftBy: number): this {
     this.chords = this.shiftScale(shiftBy);
-
     return this;
   }
 
+  /**
+   * Shifts the scale from one chord to another chord.
+   * 
+   * @param from The chord to shift from.
+   * @param to The chord to shift to.
+   * @returns The updated instance of the ChordsTransposer class.
+   */
   shiftScaleFromTo(from: string, to: string): this {
     const arrangement =
       chordsArrangement.indexOf(from) !== -1 &&

@@ -9,15 +9,6 @@ test("parse test", () => {
   );
 });
 
-test("shiftScaleBy test", () => {
-  const song = "Gm  F    Gm Eb     B   F     B  Gm";
-  const songObj = new Transposer(song);
-
-  expect(songObj.shiftScaleBy(1).getWithTags()).toEqual(
-    '<span class="chords-highlighted">Abm</span>  <span class="chords-highlighted">Gb</span>    <span class="chords-highlighted">Abm</span> <span class="chords-highlighted">E</span>     <span class="chords-highlighted">C</span>   <span class="chords-highlighted">Gb</span>     <span class="chords-highlighted">C</span>  <span class="chords-highlighted">Abm</span>',
-  );
-});
-
 test("shiftScaleFromTo test", () => {
   const song = "Gm  F    Gm Eb     B   F     B  Gm";
 
@@ -40,5 +31,32 @@ test("shiftScaleBy complex test 1", () => {
     songObj.shiftScaleBy(1).shiftScaleBy(1).shiftScaleBy(1).getWithTags(),
   ).toEqual(
     '| <span class="chords-highlighted">Bbm</span> | <span class="chords-highlighted">Ab</span> | <span class="chords-highlighted">Bbm</span> | <span class="chords-highlighted">Gb</span> |',
+  );
+});
+
+test("shiftScaleBy test", () => {
+  const song = "Gm  F    Gm Eb     B   F     B  Gm";
+  const songObj = new Transposer(song);
+
+  expect(songObj.shiftScaleBy(1).getWithTags()).toEqual(
+    '<span class="chords-highlighted">Abm</span>  <span class="chords-highlighted">Gb</span>    <span class="chords-highlighted">Abm</span> <span class="chords-highlighted">E</span>     <span class="chords-highlighted">C</span>   <span class="chords-highlighted">Gb</span>     <span class="chords-highlighted">C</span>  <span class="chords-highlighted">Abm</span>',
+  );
+});
+
+test("shiftScaleBy test with negative shift", () => {
+  const song = "Gm  F    Gm Eb     B   F     B  Gm";
+  const songObj = new Transposer(song);
+
+  expect(songObj.shiftScaleBy(-1).getWithTags()).toEqual(
+    '<span class=\"chords-highlighted\">Gbm</span>  <span class=\"chords-highlighted\">E</span>    <span class=\"chords-highlighted\">Gbm</span> <span class=\"chords-highlighted\">D</span>     <span class=\"chords-highlighted\">Bb</span>   <span class=\"chords-highlighted\">E</span>     <span class=\"chords-highlighted\">Bb</span>  <span class=\"chords-highlighted\">Gbm</span>',
+  );
+});
+
+test("shiftScaleBy test with zero shift", () => {
+  const song = "Gm  F    Gm Eb     B   F     B  Gm";
+  const songObj = new Transposer(song);
+
+  expect(songObj.shiftScaleBy(0).getWithTags()).toEqual(
+    '<span class="chords-highlighted">Gm</span>  <span class="chords-highlighted">F</span>    <span class="chords-highlighted">Gm</span> <span class="chords-highlighted">Eb</span>     <span class="chords-highlighted">B</span>   <span class="chords-highlighted">F</span>     <span class="chords-highlighted">B</span>  <span class="chords-highlighted">Gm</span>',
   );
 });
