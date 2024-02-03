@@ -4,6 +4,7 @@
   "description": "The Chord Transposer is a TypeScript/JavaScript library designed to manipulate and transpose chords within text-based songs.",
   "main": "lib/index.ts",
   "repository": "Open-SL/Chords-Transposer",
+  "homepage": "https://open-sl.github.io/Chords-Transposer/",
   "files": [
     "dist"
   ],
